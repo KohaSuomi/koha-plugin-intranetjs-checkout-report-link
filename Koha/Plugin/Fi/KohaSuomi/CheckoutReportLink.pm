@@ -47,12 +47,13 @@ sub new {
 ## <script> tags. By not adding them automatically for you, you'll have a
 ## chance to include other javascript files if necessary.
 sub intranet_js {
-    my (  ) = @_;
+     my ( $self, $args ) = @_;
 
     my $dir=C4::Context->config('pluginsdir');
     my $plugin_fulldir = $dir . "/Koha/Plugin/Fi/KohaSuomi/CheckoutReportLink/";
-    my $js = read_file($plugin_fulldir .'js.js');
-    
+    my $js = read_file($plugin_fulldir .'script.js');
+    my $report_id = $self->retrieve_data('config_param_a');
+    $js = $js =~ s/REPLACE_BY_CONFIG_PARAM_A/$report_id/r;
 
     return "<script>$js</script>";
 }
@@ -73,6 +74,36 @@ sub tool {
     $template->param( 'jscontent' => $js );
 
     $self->output_html( $template->output() );
+}
+
+## If your tool is complicated enough to needs it's own setting/configuration
+## you will want to add a 'configure' method to your plugin like so.
+## Here I am throwing all the logic into the 'configure' method, but it could
+## be split up like the 'report' method is.
+sub configure {
+    my ( $self, $args ) = @_;
+    my $cgi = $self->{'cgi'};
+
+    unless ( $cgi->param('save') ) {
+        my $template = $self->get_template({ file => 'configure.tt' });
+
+        ## Grab the values we already have for our settings, if any exist
+        $template->param(
+            config_param_a => $self->retrieve_data('config_param_a'),
+            last_upgraded   => $self->retrieve_data('last_upgraded'),
+        );
+
+        $self->output_html( $template->output() );
+    }
+    else {
+        $self->store_data(
+            {
+                config_param_a => $cgi->param('config_param_a'),
+                last_configured_by => C4::Context->userenv->{'number'},
+            }
+        );
+        $self->go_home();
+    }
 }
 
 ## This is the 'install' method. Any database tables or other setup that should

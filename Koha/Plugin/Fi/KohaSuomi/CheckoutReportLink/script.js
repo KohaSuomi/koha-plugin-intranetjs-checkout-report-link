@@ -3,19 +3,24 @@
 $(document).ready(function() {
   if (window.location.pathname == '/cgi-bin/koha/catalogue/detail.pl') { 
 
-    // Kielivalinta
-    var labelname = 'Lainatilasto';
-    var linkname = 'Raportti';
-    if (document.documentElement.lang.toLowerCase() === "en" ) {
-      labelname = 'Circulation statistics';
-      linkname = 'Report';
-    } else if (document.documentElement.lang.toLowerCase() === "sv-se" ) {
-      labelname = 'Utlåning statistik';
-      linkname = 'Rapport';
-    }
+    // Tarkistaa onko osakohde
+    if (document.getElementsByClassName('results_summary in').length < 1) {
 
-    // Linkin luonti
-    $('#catalogue_detail_biblio div.page-section').append('<span class="results_summary"><span class="lainatiedot label">' + labelname + ': </span><a id="lainatiedot" href="#">' + linkname + '</a></span>');
+      // Kielivalinta
+      var labelname = 'Lainatilasto';
+      var linkname = 'Raportti';
+      if (document.documentElement.lang.toLowerCase() === "en" ) {
+        labelname = 'Circulation statistics';
+        linkname = 'Report';
+      } else if (document.documentElement.lang.toLowerCase() === "sv-se" ) {
+        labelname = 'Utlåning statistik';
+        linkname = 'Rapport';
+      }
+
+      // Linkin luonti
+      $('#catalogue_detail_biblio div.page-section').append('<span class="results_summary"><span class="lainatiedot label">' + labelname + ': </span><a id="lainatiedot" href="#">' + linkname + '</a></span>');
+
+    }
   }  
 });
 

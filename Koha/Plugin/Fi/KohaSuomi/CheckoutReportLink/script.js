@@ -4,7 +4,7 @@ $(document).ready(function() {
   if (window.location.pathname == '/cgi-bin/koha/catalogue/detail.pl') { 
 
     // Tarkistaa onko osakohde
-    if (document.getElementsByClassName('results_summary in').length < 1) {
+    if (document.getElementsByClassName('results_summary in').length < 1 || document.getElementById('components_tab') !== null) {
 
       // Kielivalinta
       var labelname = 'Lainatilasto';

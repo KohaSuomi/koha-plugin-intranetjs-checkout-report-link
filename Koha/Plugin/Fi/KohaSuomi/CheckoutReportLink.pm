@@ -52,7 +52,7 @@ sub intranet_js {
     my $dir=C4::Context->config('pluginsdir');
     my $plugin_fulldir = $dir . "/Koha/Plugin/Fi/KohaSuomi/CheckoutReportLink/";
     my $js = read_file($plugin_fulldir .'script.js');
-    my $report_id = $self->retrieve_data('config_param_a');
+    my $report_id = $self->retrieve_data('config_param_a') || 0;
     $js = $js =~ s/REPLACE_BY_CONFIG_PARAM_A/$report_id/r;
     utf8::decode($js);
     

@@ -27,7 +27,7 @@ $(document).ready(function() {
 $('body').on('click', '#lainatiedot', function(e) {
   e.preventDefault();
     var reportnumber = REPLACE_BY_CONFIG_PARAM_A;
-    var reporturl = '/cgi-bin/koha/reports/guided_reports.pl?reports=' + reportnumber + '&phase=Run+this+report&param_name=biblionumber&sql_params=' + biblionumber;
+    var reporturl = '/cgi-bin/koha/reports/guided_reports.pl?id=' + reportnumber + '&param_name=biblionumber&sql_params=' + biblionumber +'&op=run';
     var newin = window.open(reporturl,'popup','width=1280,height=720,resizable=no,toolbar=false,scrollbars=yes,top');
 });
 /// LOPPU ///

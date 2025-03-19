@@ -22,7 +22,7 @@ our $metadata = {
     minimum_version => '',
     maximum_version => '',
     version         => $VERSION,
-    description     => 'Linkki lainatilastoraporttiin tietueen pääsivulla G1109. Lisää Määrittely-osioon käytettävän raportin numero.',
+    description     => 'Linkki lainatilastoraporttiin tietueen pääsivulla G1109. Lisää Määrittely-osioon käytettävän raportin numero. (Paikalliskannat)',
 };
 
 ## This is the minimum code required for a plugin's 'new' method

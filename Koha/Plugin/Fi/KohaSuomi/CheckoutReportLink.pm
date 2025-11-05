@@ -36,7 +36,7 @@ sub new {
 
     ## Here, we call the 'new' method for our base class
     ## This runs some additional magic and checking
-    ## and returns our actual 
+    ## and returns our actual
     my $self = $class->SUPER::new($args);
 
     return $self;
@@ -55,7 +55,7 @@ sub intranet_js {
     my $report_id = $self->retrieve_data('config_param_a') || 0;
     $js = $js =~ s/REPLACE_BY_CONFIG_PARAM_A/$report_id/r;
     utf8::decode($js);
-    
+
     return "<script>$js</script>";
 }
 
@@ -63,12 +63,12 @@ sub intranet_js {
 ## of running a tool. The difference between a tool and a report is
 ## primarily semantic, but in general any plugin that modifies the
 ## Koha database should be considered a tool
-sub tool {
+sub admin {
     my ( $self, $args ) = @_;
-    
+
     my $cgi = $self->{'cgi'};
     my $template = $self->get_template({ file => 'viewjs.tt' });
-    
+
     my $plugin_fulldir = $self->mbf_path();
     my $js = read_file($plugin_fulldir .'script.js');
     utf8::decode($js);
@@ -119,7 +119,7 @@ sub install() {
                 type => 'intranetUserJs',
             }
         );
-        
+
     return 1;
 }
 

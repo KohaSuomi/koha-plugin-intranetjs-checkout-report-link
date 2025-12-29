@@ -1,10 +1,10 @@
 /// ALKU ///
 // Linkki lainatilastoraporttiin tietueen pääsivulla
 $(document).ready(function() {
-  if (window.location.pathname == '/cgi-bin/koha/catalogue/detail.pl') { 
+  if (window.location.pathname == '/cgi-bin/koha/catalogue/detail.pl') {
 
     // Tarkistaa onko osakohde
-    if (document.getElementsByClassName('results_summary in').length < 1 || document.getElementById('components_tab') !== null) {
+    if ( $(".results_summary.in").length < 1 || $("#components-tab").length > 0 ) {
 
       // Kielivalinta
       var labelname = 'Lainatilasto';
@@ -21,7 +21,7 @@ $(document).ready(function() {
       $('#catalogue_detail_biblio div.page-section').append('<span class="results_summary"><span class="lainatiedot label">' + labelname + ': </span><a id="lainatiedot" href="#">' + linkname + '</a></span>');
 
     }
-  }  
+  }
 });
 
 $('body').on('click', '#lainatiedot', function(e) {

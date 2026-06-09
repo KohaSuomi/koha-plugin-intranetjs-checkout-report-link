@@ -11,5 +11,10 @@
         upgrade_status = "Upgrade status",
         last_upgraded = "Plugin was last upgraded on this system on",
         never_upgraded = "Plugin has never been upgraded."
+
+        viewjs_1                                   = "IntranetUserJS: Checkout report link", # NEW
+        viewjs_2                                   = "Home", # NEW
+        viewjs_3                                   = "Plugins", # NEW
+        viewjs_4                                   = "&rsaquo; CheckoutReportLink &rsaquo; View JS Tool", # NEW
     }
 %]

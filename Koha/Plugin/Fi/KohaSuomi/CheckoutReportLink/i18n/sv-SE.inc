@@ -11,5 +11,10 @@
         upgrade_status = "Uppgraderingsstatus",
         last_upgraded = "Plugin uppgraderades senast på detta system den",
         never_upgraded = "Plugin har aldrig uppgraderats."
+
+        viewjs_1                                   = "IntranetUserJS: Utlåningsstatistikrapporten länk", # NEW
+        viewjs_2                                   = "Hem", # NEW
+        viewjs_3                                   = "Plugins", # NEW
+        viewjs_4                                   = "&rsaquo; CheckoutReportLink &rsaquo; Visa JS-verktyg", # NEW
     }
 %]

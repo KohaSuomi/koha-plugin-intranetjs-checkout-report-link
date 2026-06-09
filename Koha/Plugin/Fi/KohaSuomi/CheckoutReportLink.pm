@@ -25,6 +25,26 @@ our $metadata = {
     description     => 'Linkki lainatilastoraporttiin tietueen pääsivulla. Lisää Määrittely-osioon käytettävän raportin numero. (Paikalliskannat)',
 };
 
+sub get_localized_metadata {
+    my ($self) = @_;
+    my $lang = C4::Languages::getlanguage() || 'en';
+    my ($name, $description);
+
+    if ($lang eq 'sv-SE') {
+        $name = "intranetUserJS: Utlåningsstatistikrapporten länk";
+        $description = "Länk till utlåningsstatistikrapporten på objektsidan. Lägg till rapportens nummer i konfigurationssektionen. (Lokala databaser)";
+    
+    } elsif ($lang eq 'fi-FI' ) {
+        $name = "intranetUserJS: Linkki lainatilastoraporttiin";
+        $description = "Linkki lainatilastoraporttiin tietueen pääsivulla. Lisää Määrittely-osioon käytettävän raportin numero. (Paikalliskannat)";
+    } else {
+        $name = "IntranetUserJS: Checkout report link";
+        $description = "Link to the checkout report on the record page. Add the report number in the configuration section. (Local databases)";
+    }
+    return ($name, $description);
+}
+
+
 ## This is the minimum code required for a plugin's 'new' method
 ## More can be added, but none should be removed
 sub new {
@@ -38,6 +58,10 @@ sub new {
     ## This runs some additional magic and checking
     ## and returns our actual
     my $self = $class->SUPER::new($args);
+
+    my ($name, $description) = $self->get_localized_metadata();
+    $self->{'metadata'}->{'name'} = $name;
+    $self->{'metadata'}->{'description'} = $description;
 
     return $self;
 }

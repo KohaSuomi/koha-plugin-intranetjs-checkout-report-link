@@ -15,14 +15,12 @@ our $VERSION = "1.0.0";
 
 ## Here is our metadata, some keys are required, some are optional
 our $metadata = {
-    name            => 'IntranetUserJS: Checkout report link',
     author          => 'Lari Strand',
     date_authored   => '2024-03-25',
     date_updated    => '2024-03-25',
     minimum_version => '',
     maximum_version => '',
     version         => $VERSION,
-    description     => 'Linkki lainatilastoraporttiin tietueen pääsivulla. Lisää Määrittely-osioon käytettävän raportin numero. (Paikalliskannat)',
 };
 
 sub get_localized_metadata {
@@ -31,15 +29,14 @@ sub get_localized_metadata {
     my ($name, $description);
 
     if ($lang eq 'sv-SE') {
-        $name = "intranetUserJS: Utlåningsstatistikrapporten länk";
-        $description = "Länk till utlåningsstatistikrapporten på objektsidan. Lägg till rapportens nummer i konfigurationssektionen. (Lokala databaser)";
-    
+        $name = "IntranetUserJS: Länk till utlåningsstatistikrapporten";
+        $description = "Länk till utlåningsstatistikrapporten i Normal-vyn. Lägg till rapportens nummer under Konfigurera. (Lokala databaser)";
     } elsif ($lang eq 'fi-FI' ) {
-        $name = "intranetUserJS: Linkki lainatilastoraporttiin";
-        $description = "Linkki lainatilastoraporttiin tietueen pääsivulla. Lisää Määrittely-osioon käytettävän raportin numero. (Paikalliskannat)";
+        $name = "IntranetUserJS: Linkki lainatilastoraporttiin";
+        $description = "Linkki lainatilastoraporttiin kuvailutietueen perustiedot-sivulle. Lisää Määrittely-osioon käytettävän raportin numero. (Paikalliskannat)";
     } else {
         $name = "IntranetUserJS: Checkout report link";
-        $description = "Link to the checkout report on the record page. Add the report number in the configuration section. (Local databases)";
+        $description = "Link to the checkout report on the bibliographic record’s detail page. Add the report number in the configuration section. (Local databases)";
     }
     return ($name, $description);
 }
